@@ -5,7 +5,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-  }, basePath: '/calc',
+  },
 }
 
 export default nextConfig
