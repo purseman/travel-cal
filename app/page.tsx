@@ -57,16 +57,17 @@ export default function Page() {
   return (
     <div className="relative min-h-screen bg-background">
       
-      {/* 🏠 홈 버튼: z-[100]으로 최상단 고정 */}
-      <div className="fixed top-4 left-4 z-[100]">
-        <Link 
-          href="https://www.heartbitcode.com" 
-          className="flex items-center justify-center w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 hover:bg-gray-100 transition-all group active:scale-95"
-          style={{ cursor: 'pointer', pointerEvents: 'auto' }}
-        >
-          <Home className="w-6 h-6 text-gray-700 group-hover:text-blue-500" />
-        </Link>
-      </div>
+      {/* 🏠 [최종 수정본] Link 대신 <a> 태그 사용 */}
+<div className="fixed top-4 left-4 z-[100]">
+  <a 
+    href="https://www.heartbitcode.com" 
+    className="flex items-center justify-center w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 hover:bg-gray-100 transition-all group active:scale-95"
+    style={{ cursor: 'pointer' }}
+    title="홈으로 돌아가기"
+  >
+    <Home className="w-6 h-6 text-gray-700 group-hover:text-blue-500" />
+  </a>
+</div>
 
       {/* 중복된 ExpenseCalculator를 하나로 합치고 상단 여백 부여 */}
       <div className="pt-6">
