@@ -89,3 +89,29 @@ export default function Page() {
     </div>
   )
 }
+
+import { Home } from "lucide-react"; // 홈 아이콘 임포트
+import Link from "next/link";
+
+export default function TravelCalcPage() {
+  return (
+    <main className="relative min-h-screen">
+      {/* 고정형 홈 버튼 */}
+      <div className="absolute top-4 left-4 z-50">
+        <Link 
+          href="https://www.heartbitcode.com" 
+          className="flex items-center justify-center w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full shadow-md border border-gray-200 hover:bg-gray-100 transition-all"
+          title="홈으로 돌아가기"
+        >
+          <Home className="w-5 h-5 text-gray-700" />
+        </Link>
+      </div>
+
+      {/* 기존 계산기 컨텐츠 시작 */}
+      <div className="pt-16"> 
+        {/* 기존 내용을 감싸는 부분에 여백(pt-16)을 주어 버튼과 겹치지 않게 합니다. */}
+        {/* ... 기존 코드 ... */}
+      </div>
+    </main>
+  );
+}
