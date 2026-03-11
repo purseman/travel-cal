@@ -6,7 +6,7 @@ const partners = [
   {
     name: "아고다 최저가 찾기",
     description: "전 세계 호텔 최저가 비교",
-    href: "https://www.agoda.com",
+    href: "https://www.agoda.com/partners/partnersearch.aspx?pcs=1&cid=1951548&hl=ko-kr&city=14690",
     icon: Building2,
     color: "bg-[#5335B8] text-white",
     cardBg: "bg-[#F4EFFF] dark:bg-[#2D1B4E] border-2 border-[#5335B8]",
@@ -23,7 +23,7 @@ const partners = [
   {
     name: "클룩 액티비티",
     description: "인기 투어 & 티켓 예약",
-    href: "https://www.klook.com",
+    href: "http://app.ac/pE6BiYS43",
     icon: Ticket,
     color: "bg-[#FF5722] text-white",
     cardBg: "bg-[#FFF0E8] dark:bg-[#4A2518] border-2 border-border",
