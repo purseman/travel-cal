@@ -3,8 +3,8 @@
 import Script from "next/script"
 import { useMemo, useState } from "react"
 import { ExpenseCalculator } from "@/components/expense-calculator"
-import { Home } from "lucide-react" // 1. 아이콘 추가
-import Link from "next/link"      // 2. 링크 추가
+import { Home } from "lucide-react"
+import Link from "next/link"
 
 declare global {
   interface Window {
@@ -54,33 +54,27 @@ export default function Page() {
     })
   }
 
-return (
+  return (
     <div className="relative min-h-screen bg-background">
       
-      {/* 🏠 [수정본] 홈 버튼: fixed로 고정하고 z-index를 아주 높게 설정 */}
+      {/* 🏠 홈 버튼: z-[100]으로 최상단 고정 */}
       <div className="fixed top-4 left-4 z-[100]">
         <Link 
           href="https://www.heartbitcode.com" 
           className="flex items-center justify-center w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 hover:bg-gray-100 transition-all group active:scale-95"
-          style={{ cursor: 'pointer', pointerEvents: 'auto' }} // 클릭 이벤트를 강제로 활성화
-          title="홈으로 돌아가기"
+          style={{ cursor: 'pointer', pointerEvents: 'auto' }}
         >
           <Home className="w-6 h-6 text-gray-700 group-hover:text-blue-500" />
         </Link>
       </div>
 
-      {/* 버튼이 눌리는지 확인하기 위해 상단 여백을 조금 더 줌 */}
-      <div className="pt-4">
+      {/* 중복된 ExpenseCalculator를 하나로 합치고 상단 여백 부여 */}
+      <div className="pt-6">
         <ExpenseCalculator
           onTotalChange={setTotalKRW}
           onShareLinesChange={setShareLines}
         />
       </div>
-
-      <ExpenseCalculator
-        onTotalChange={setTotalKRW}
-        onShareLinesChange={setShareLines}
-      />
 
       <div className="mx-auto w-full max-w-6xl px-4 pb-10 md:px-6">
         <div className="flex flex-col items-center gap-3 pt-6 text-center">
