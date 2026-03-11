@@ -3,6 +3,8 @@
 import Script from "next/script"
 import { useMemo, useState } from "react"
 import { ExpenseCalculator } from "@/components/expense-calculator"
+import { Home } from "lucide-react" // 1. 아이콘 추가
+import Link from "next/link"      // 2. 링크 추가
 
 declare global {
   interface Window {
@@ -34,12 +36,10 @@ export default function Page() {
       window.Kakao.init("15a34b3a37ab82f0942fa7e1c6f10429")
     }
 
-    // 1. 목적지 주소와 데이터를 하나로 합치기
-    const baseUrl = "https://heartcodebit.com/tripcalc"
+    const baseUrl = "https://www.heartbitcode.com/calc"
     const encodedData = encodeURIComponent(shareLines.join(","))
     const shareUrl = `${baseUrl}?data=${encodedData}`
 
-    // 2. 버튼 없이 '말풍선' 자체가 링크가 되도록 전송
     window.Kakao?.Share.sendDefault({
       objectType: "feed",
       content: {
@@ -51,12 +51,24 @@ export default function Page() {
           webUrl: shareUrl,
         },
       },
-      // 💡 buttons 배열을 아예 넣지 않으면, 카카오톡이 말풍선 영역 전체를 클릭 가능하게 만듭니다.
     })
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    // relative를 주어 홈 버튼의 기준점이 되게 합니다.
+    <div className="relative min-h-screen bg-background">
+      
+      {/* 🏠 [여기에 추가] 홈 버튼: 다른 요소보다 위에 보이도록 z-50 설정 */}
+      <div className="fixed top-4 left-4 z-50">
+        <Link 
+          href="https://www.heartbitcode.com" 
+          className="flex items-center justify-center w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-md border border-gray-200 hover:bg-gray-100 transition-all group"
+          title="홈으로 돌아가기"
+        >
+          <Home className="w-5 h-5 text-gray-700 group-hover:text-blue-500" />
+        </Link>
+      </div>
+
       <ExpenseCalculator
         onTotalChange={setTotalKRW}
         onShareLinesChange={setShareLines}
@@ -88,30 +100,4 @@ export default function Page() {
       />
     </div>
   )
-}
-
-import { Home } from "lucide-react"; // 홈 아이콘 임포트
-import Link from "next/link";
-
-export default function TravelCalcPage() {
-  return (
-    <main className="relative min-h-screen">
-      {/* 고정형 홈 버튼 */}
-      <div className="absolute top-4 left-4 z-50">
-        <Link 
-          href="https://www.heartbitcode.com" 
-          className="flex items-center justify-center w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full shadow-md border border-gray-200 hover:bg-gray-100 transition-all"
-          title="홈으로 돌아가기"
-        >
-          <Home className="w-5 h-5 text-gray-700" />
-        </Link>
-      </div>
-
-      {/* 기존 계산기 컨텐츠 시작 */}
-      <div className="pt-16"> 
-        {/* 기존 내용을 감싸는 부분에 여백(pt-16)을 주어 버튼과 겹치지 않게 합니다. */}
-        {/* ... 기존 코드 ... */}
-      </div>
-    </main>
-  );
 }
