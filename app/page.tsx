@@ -31,27 +31,37 @@ const shareDetailText = useMemo(
 )
 
 const shareToKakao = () => {
-if (typeof window === "undefined") return
-if (window.Kakao && !window.Kakao.isInitialized()) {
-window.Kakao.init("15a34b3a37ab82f0942fa7e1c6f10429")
-}
+  if (typeof window === "undefined") return
+  if (window.Kakao && !window.Kakao.isInitialized()) {
+    window.Kakao.init("15a34b3a37ab82f0942fa7e1c6f10429")
+  }
 
-const baseUrl = "https://www.heartbitcode.com/calc"
-const encodedData = encodeURIComponent(shareLines.join(","))
-const shareUrl = `${baseUrl}?data=${encodedData}`
+  const baseUrl = "https://www.heartbitcode.com/calc"
+  const encodedData = encodeURIComponent(shareLines.join(","))
+  const shareUrl = `${baseUrl}?data=${encodedData}`
 
-window.Kakao?.Share.sendDefault({
-objectType: "feed",
-content: {
-title: "💰 스마트 맨의 여행 가계부 [상세보기 클릭] 💰",
-description: shareDetailText || `총합계: ${formattedTotalKRW}원`,
-imageUrl: "https://cdn.pixabay.com/photo/2016/03/31/19/58/money-1295410_1280.png",
-link: {
-mobileWebUrl: shareUrl,
-webUrl: shareUrl,
-},
-},
-})
+  window.Kakao?.Share.sendDefault({
+    objectType: "feed",
+    content: {
+      title: "💰 스마트 맨의 여행 가계부 [상세보기 클릭] 💰",
+      description: shareDetailText || `총합계: ${formattedTotalKRW}원`,
+      imageUrl: "https://cdn.pixabay.com/photo/2016/03/31/19/58/money-1295410_1280.png",
+      link: {
+        mobileWebUrl: shareUrl,
+        webUrl: shareUrl,
+      },
+    },
+    // ✅ 명시적인 이동 버튼 추가
+    buttons: [
+      {
+        title: "계산 내역 상세보기",
+        link: {
+          mobileWebUrl: shareUrl,
+          webUrl: shareUrl,
+        },
+      },
+    ],
+  })
 }
 
 return (
