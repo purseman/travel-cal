@@ -129,7 +129,7 @@ window.Kakao.init("15a34b3a37ab82f0942fa7e1c6f10429")
           <a href="https://www.howtotheworld.com" target="_blank" rel="noopener noreferrer" className="inline-block transition-opacity hover:opacity-80">
             {/* 로고 이미지는 public 폴더에 배치하는 것을 추천합니다. 예: public/logos/howtotheworld.png */}
             <img 
-              src="/logos/howtotheworld.png" 
+              src="/logos/howworld-logo.png" 
               alt="하우월드 로고" 
               className="h-14 w-auto" // 이미지 높이를 살짝 키워 시인성을 높였습니다.
             />
