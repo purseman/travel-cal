@@ -107,7 +107,7 @@ export default function Page() {
               className="inline-block transition-opacity hover:opacity-80"
             >
               <img 
-                src="/logos/howworld-logo.PNG" 
+                src="/howworld-logo.png" 
                 alt="하우월드 로고" 
                 className="h-14 w-auto object-contain" 
               />
