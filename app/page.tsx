@@ -30,37 +30,40 @@ export default function Page() {
     [shareLines]
   )
 
-  const shareToKakao = () => {
-  // ... 생략 ...
+const shareToKakao = () => {
+  if (typeof window === "undefined" || !window.Kakao) return
+  
+  if (!window.Kakao.isInitialized()) {
+    window.Kakao.init("15a34b3a37ab82f0942fa7e1c6f10429")
+  }
 
-  // 1. 현재 브라우저의 진짜 주소를 가져오거나, 가장 확실한 주소를 입력하세요.
-  const shareUrl = "https://www.heartbitcode.com/calc"; 
+  // 💡 도메인 설정과 100% 일치하도록 주소를 구성합니다.
+  const shareUrl = "https://www.heartbitcode.com/calc"
 
-  window.Kakao?.Share.sendDefault({
+  window.Kakao.Share.sendDefault({
     objectType: "feed",
     content: {
       title: "💰 스마트 맨의 여행 가계부 [상세보기 클릭] 💰",
       description: shareDetailText || `총합계: ${formattedTotalKRW}원`,
-      imageUrl: "https://cdn.pixabay.com/photo/2016/03/31/19/58/money-1295410_1280.png",
+      imageUrl: "https://www.heartbitcode.com/images/travel-calc-og.webp",
       link: {
-        // 이 두 주소가 카카오 설정 도메인과 100% 일치해야 클릭이 됩니다.
-        mobileWebUrl: shareUrl, 
+        mobileWebUrl: shareUrl,
         webUrl: shareUrl,
       },
     },
-    // 클릭 안 될 때를 대비해 버튼을 하나만 강제로 넣어보세요.
+    // 💡 버튼을 명시적으로 추가하여 클릭 성공률을 높입니다.
     buttons: [
       {
-        title: "계산 결과 확인하기",
+        title: "계산 내역 확인하기",
         link: {
           mobileWebUrl: shareUrl,
           webUrl: shareUrl,
         },
       },
     ],
-  });
+  })
 }
-
+  
   return (
     <div className="relative min-h-screen bg-background">
       
