@@ -111,6 +111,34 @@ window.Kakao.init("15a34b3a37ab82f0942fa7e1c6f10429")
 }
 }}
 />
+return (
+  <div className="relative min-h-screen bg-background">
+    {/* ... 기존 홈 버튼, 계산기, 공유 버튼 영역 ... */}
+
+    {/* 🦶 Footer: 여행 경비 계산기의 색상 앤 매너를 완벽 매칭 */}
+    <footer className="w-full py-10 mt-16 border-t border-gray-200 bg-white">
+      <div className="max-w-4xl mx-auto px-4 flex flex-col items-center gap-5">
+        
+        {/* 1. 소개 문구: 가독성이 좋은 보조 텍스트 색상 사용 */}
+        <div className="text-center text-sm text-gray-500 font-medium">
+          이 웹앱은 전 세계 여행 정보 전문가, <span className="text-gray-900 font-semibold">하우월드(www.howtotheworld.com)</span>에서 제작했습니다.
+        </div>
+        
+        {/* 2. 하우월드 로고: 클릭 시 투명도 호버 효과 추가 */}
+        <div>
+          <a href="https://www.howtotheworld.com" target="_blank" rel="noopener noreferrer" className="inline-block transition-opacity hover:opacity-80">
+            {/* 로고 이미지는 public 폴더에 배치하는 것을 추천합니다. 예: public/logos/howtotheworld.png */}
+            <img 
+              src="/logos/howtotheworld.png" 
+              alt="하우월드 로고" 
+              className="h-14 w-auto" // 이미지 높이를 살짝 키워 시인성을 높였습니다.
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+)
 </div>
 )
 }
