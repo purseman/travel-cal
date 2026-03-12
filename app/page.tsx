@@ -111,7 +111,7 @@ window.Kakao.init("15a34b3a37ab82f0942fa7e1c6f10429")
 }
 }}
 />
-return (
+
   <div className="relative min-h-screen bg-background">
     {/* ... 기존 홈 버튼, 계산기, 공유 버튼 영역 ... */}
 
