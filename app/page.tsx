@@ -28,43 +28,34 @@ export default function Page() {
     }
   }
 
-  const shareToKakao = () => {
-    if (!window.Kakao || !window.Kakao.Share) {
-      alert("카카오톡 공유 기능을 불러오는 중입니다. 잠시만 기다려주세요.")
-      return
-    }
+ const shareToKakao = () => {
+  if (!window.Kakao || !window.Kakao.Share) return;
 
-    const shareUrl = "https://www.heartbitcode.com/calc"
+  // 💡 테스트를 위해 경로(/calc)를 빼고 '메인 도메인'만 넣어봅니다.
+  const testUrl = "https://www.heartbitcode.com"; 
 
-    // 💡 .sendDefault 대신 .createDefaultButton을 쓰지 않고 바로 실행하는 .sendDefault가 맞지만,
-    // 혹시 모르니 버튼 배열을 '확실하게' 포함합니다.
-    try {
-      window.Kakao.Share.sendDefault({
-        objectType: "feed",
-        content: {
-          title: "💰 스마트 맨의 여행 가계부 [상세보기 클릭] 💰",
-          description: shareDetailText || `총합계: ${formattedTotalKRW}원`,
-          imageUrl: "https://www.heartbitcode.com/images/travel-calc-og.webp",
-          link: {
-            mobileWebUrl: shareUrl,
-            webUrl: shareUrl,
-          },
+  window.Kakao.Share.sendDefault({
+    objectType: "feed",
+    content: {
+      title: "💰 스마트 맨의 여행 가계부 💰",
+      description: "클릭해서 메인 페이지로 이동하는지 확인해 보세요!",
+      imageUrl: "https://www.heartbitcode.com/images/travel-calc-og.webp",
+      link: {
+        mobileWebUrl: testUrl,
+        webUrl: testUrl,
+      },
+    },
+    buttons: [
+      {
+        title: "홈페이지 가기",
+        link: {
+          mobileWebUrl: testUrl,
+          webUrl: testUrl,
         },
-        buttons: [
-          {
-            title: "계산 내역 확인하기",
-            link: {
-              mobileWebUrl: shareUrl,
-              webUrl: shareUrl,
-            },
-          },
-        ],
-      })
-    } catch (error) {
-      console.error("Kakao Share Error:", error)
-      alert("공유 중 오류가 발생했습니다. 콘솔 창을 확인해주세요.")
-    }
-  }
+      },
+    ],
+  });
+};
 
   return (
     <div className="relative min-h-screen bg-background">
